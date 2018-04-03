@@ -1,0 +1,85 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Starter template for Day One Space Tours hackathon
+
+Parameters:
+    DbPassword:
+        Type: String
+        Default: password
+        NoEcho: true
+
+Globals:
+  Api:
+    BinaryMediaTypes:
+      - '*~1*'
+
+Resources:
+
+  HotelsService:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: lambda.handler
+      Runtime: nodejs6.10
+      Timeout: 15 # in seconds
+      CodeUri: .
+      Policies: 
+        # Add other AWS Managed policies as necessary
+        - AmazonDynamoDBReadOnlyAccess
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref Table
+          CUSTOMER_TABLE_ARN: !GetAtt CustomerTable.Arn
+          HOTELDB_INSTANCE_ADDRESS: !GetAtt HotelDBInstance.Endpoint.Address
+          HOTELDB_INSTANCE_PORT: !GetAtt HotelDBInstance.Endpoint.Port
+      Events:
+        RootRoute:
+          Type: Api
+          Properties:
+            Path: /
+            Method: get
+        AllRoutes:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: any
+
+  CustomerTable:
+    # https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlesssimpletable
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+        PrimaryKey:
+            Name: CustomerId
+            Type: Number
+
+  # Example for creating a Aurora RDS Instance running MySQL. This will only create the instance with the DB server,
+  # the Database and tables will have to be created using normanl MySQL commands after connecting to this instance.
+  # To connect to the RDS instance running MySQL using MySQL workbench please refer
+  # https://aws.amazon.com/premiumsupport/knowledge-center/connect-rds-mysql-workbench/
+  #
+  # You don't need both Aurora and DynamoDB tables.Choose the one that makes most sense for you
+  HotelDBInstance:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      AllocatedStorage: 20
+      DBInstanceClass: db.t2.micro
+      Engine: MySQL
+      EngineVersion: 5.6.39
+      MasterUsername: admin
+      MasterUserPassword: !Ref DbPassword
+
+Outputs:
+  ApiBaseUrl:
+    Description: API Gateway endpoint URL for Prod environment
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
+  HotelDBInstanceAddress:
+    Description: Address to connect to the MySQL Hotel DB Instance
+    Value:
+      Fn::GetAtt:
+        - HotelDBInstance
+        - Endpoint.Address
+  HotelDBInstancePort:
+    Description: Port number to connect to the MySQL Hotel DB Instance
+    Value:
+      Fn::GetAtt:
+        - HotelDBInstance
+        - Endpoint.Port
