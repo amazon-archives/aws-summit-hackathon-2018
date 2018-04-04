@@ -52,5 +52,5 @@ We have pre-configured simple packaging and deploying instructions in the `packa
   - [DynamoDB Developer Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html)
 
 6. [Amazon Aurora](https://aws.amazon.com/rds/aurora/?nc2=h_m1) is a MySQL and PostgreSQL compatible relational database built for the cloud. The [SAM](https://docs.aws.amazon.com/lambda/latest/dg/serverless_app.html) template in this package creates an instance running MySQL Database in it. Refer the following documentation to work with MySQL in [Amazon Aurora](https://aws.amazon.com/rds/aurora/?nc2=h_m1),
-  - [Connecting to a DB Instance Running MySQL](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ConnectToInstance.html)
+  - [Connecting to a DB Instance Running MySQL](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Connecting.html)
   - [Aurora User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
