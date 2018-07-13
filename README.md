@@ -1,5 +1,5 @@
 
-If you are new to Serverless or want a starting point for the hackathon, you can use this starter project to help you get started faster. This repo also includes sample data which you can use in your hotel-booking app. This code contains a SAM template that defines the resources in your application, a Nodejs Lambda function starter code and some instructions to get you off the ground. Feel free to use this template to get started, though you are not required to use it. You are free to use other tools or libraries that you might be already familiar with.
+If you are new to Serverless or want a starting point for the AWS NY Summit hackathon, you can use this starter project to help you get going. This repo also includes sample data which you can use in your hotel booking app. This code contains a SAM template that defines the resources in your application, starter code for a Node.js Lambda function and some instructions to get you off the ground. Feel free to use this template to get started, though you are not required to use it. You are free to use other tools or libraries that you might be already familiar with.
 
 ### Getting Started
 
