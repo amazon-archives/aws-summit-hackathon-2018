@@ -45,12 +45,14 @@ We have pre-configured simple packaging and deploying instructions in the `packa
 
 4. All logs from your Lambda Function are pushed to [Amazon CloudWatch](https://aws.amazon.com/cloudwatch/?nc2=h_m1), which can be used to debug the [Lambda Function](https://aws.amazon.com/lambda/). For more details refer [Monitoring and Troubleshooting Lambda-based Applications](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html).
 
-5. [Amazon DynamoDB](https://aws.amazon.com/dynamodb/?nc2=h_m1) is a fully managed [NoSQL](https://aws.amazon.com/nosql/) database. The [SAM](https://docs.aws.amazon.com/lambda/latest/dg/serverless_app.html) template in this package creates a simple [Amazon DynamoDB](https://aws.amazon.com/dynamodb/?nc2=h_m1) table. Refer the following documentation to start using DynamoDB in your Serverless Application,
+5. [Amazon DynamoDB](https://aws.amazon.com/dynamodb/?nc2=h_m1) is a fully managed [NoSQL](https://aws.amazon.com/nosql/) database. The [SAM](https://docs.aws.amazon.com/lambda/latest/dg/serverless_app.html) template in this package creates a simple [Amazon DynamoDB](https://aws.amazon.com/dynamodb/?nc2=h_m1) table. Refer to the following documentation to start using DynamoDB in your Serverless Application:
   - [Getting Started with DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStarted.html)
   - [Programming with DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.html)
   - [Working with DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithDynamo.html)
   - [DynamoDB Developer Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html)
 
-6. [Amazon Aurora](https://aws.amazon.com/rds/aurora/?nc2=h_m1) is a MySQL and PostgreSQL compatible relational database built for the cloud. The [SAM](https://docs.aws.amazon.com/lambda/latest/dg/serverless_app.html) template in this package creates an instance running MySQL Database in it. Refer the following documentation to work with MySQL in [Amazon Aurora](https://aws.amazon.com/rds/aurora/?nc2=h_m1),
+6. [Amazon Aurora](https://aws.amazon.com/rds/aurora/?nc2=h_m1) is a MySQL and PostgreSQL compatible relational database built for the cloud. The [SAM](https://docs.aws.amazon.com/lambda/latest/dg/serverless_app.html) template in this package creates an instance running MySQL Database in it. Refer to the following documentation to work with MySQL in [Amazon Aurora](https://aws.amazon.com/rds/aurora/?nc2=h_m1):
   - [Connecting to an Aurora DB Cluster](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Connecting.html)
   - [Aurora User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
+  - [Invoking Lambda from an Aurora DB Cluster](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AuroraMySQL.Integrating.Lambda.html)
+  - [Configuring Lambda to access RDS](https://docs.aws.amazon.com/lambda/latest/dg/vpc-rds.html)
