@@ -5,9 +5,9 @@ If you are new to Serverless or want a starting point for the AWS Summit hackath
 
 Here are the instructions to start using the starter project:
 
-1. Checkout the code: `git clone <url>`
+1. Checkout the code: `git clone <url> day-one-space-tours`
 1. `cd day-one-space-tours`
-1. You will need an Amazon S3 Bucket to be able to deploy the stack. Choose a bucket name and create a bucket first using the command `aws s3 mb <bucketname>`
+1. You will need an Amazon S3 Bucket to be able to deploy the stack. Choose a bucket name and create a bucket first using the command `aws s3 mb s3://<bucketname>` This bucket name must be globally unique.
 1. Open `package.json` in an editor and replace the `<sam-package-bucket>` string in the package command script with the bucket name you choose in previous step
 1. Now you are ready to get started with development. Use `npm install` to install required modules and start coding!
 
