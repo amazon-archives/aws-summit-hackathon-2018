@@ -1,6 +1,6 @@
 ### API
 
-`GET /`: Lists all of the current users reservations.  Columns would
+`GET /reservations`: Lists all of the current users reservations.  Columns would
 include: Hotel Name (link), Reservation date range.
 
 **Returns**
