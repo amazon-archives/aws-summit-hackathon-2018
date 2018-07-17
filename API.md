@@ -4,7 +4,7 @@
 include: Hotel Name (link), Reservation date range.
 
 **Returns**
-{
+```{
   "data": [
     {
       "name": "Hotel A",
@@ -15,7 +15,7 @@ include: Hotel Name (link), Reservation date range.
       }
     }
   ]
-}
+}```
 
 `GET /hotels`: Lists all of the hotels. Columns would include: Hotel
 Name (link)
@@ -39,7 +39,7 @@ already reserved hotel rooms.  Selector that can choose a date range to
 reserve a room.
 
 **Returns**:
-{
+```{
   "data": {
     "name": "Hotel A",
     "reservations": {
@@ -48,12 +48,12 @@ reserve a room.
       "2018-01-03": { total: 4, used: 3, booked: false },
     }
   }
-}
+}```
 
 `POST /hotels/:hotelId?dateStart=01/05/2018&dateEnd=01/06/2018`
 
 **Returns**
-{
+```{
   "data": {
     "name": "Hotel A",
      "reservations": {
@@ -62,4 +62,4 @@ reserve a room.
         "2018-01-03": 4
       }
   }
-}
+}```
