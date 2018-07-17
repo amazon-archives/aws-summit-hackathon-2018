@@ -1,9 +1,10 @@
 ### API
 
-`GET /`: Lists all of the current users reservations.  Columns would
+`GET /reservations`: Lists all of the current users reservations.  Columns would
 include: Hotel Name (link), Reservation date range.
 
 **Returns**
+```
 {
   "data": [
     {
@@ -16,11 +17,13 @@ include: Hotel Name (link), Reservation date range.
     }
   ]
 }
+```
 
 `GET /hotels`: Lists all of the hotels. Columns would include: Hotel
 Name (link)
 
 **Returns**
+```
 {
   "data": [
     {
@@ -33,12 +36,14 @@ Name (link)
     }
   ]
 }
+```
 
 `GET /hotels/:hotelId`: Displays a hotel and a calender that blocks out
 already reserved hotel rooms.  Selector that can choose a date range to
 reserve a room.
 
 **Returns**:
+```
 {
   "data": {
     "name": "Hotel A",
@@ -49,10 +54,12 @@ reserve a room.
     }
   }
 }
+```
 
 `POST /hotels/:hotelId?dateStart=01/05/2018&dateEnd=01/06/2018`
 
 **Returns**
+```
 {
   "data": {
     "name": "Hotel A",
@@ -63,3 +70,4 @@ reserve a room.
       }
   }
 }
+```
