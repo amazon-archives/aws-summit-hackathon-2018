@@ -71,3 +71,12 @@ reserve a room.
   }
 }
 ```
+
+
+## Migrations
+
+mysqlimport serverlesschallenge --ignore-lines=1 --fields-terminated-by=, -h day-one-space-tours-hoteldbcluster-9nfqx5rpeqsk.cluster-czkkmvkxw6p9.us-east-1.rds.amazonaws.com -u admin sample_dataset/customers.csv --local -p
+mysqlimport serverlesschallenge --ignore-lines=1 --fields-terminated-by=, -h day-one-space-tours-hoteldbcluster-9nfqx5rpeqsk.cluster-czkkmvkxw6p9.us-east-1.rds.amazonaws.com -u admin sample_dataset/fare_types.csv --local -p
+mysqlimport serverlesschallenge --ignore-lines=1 --fields-terminated-by=, -h day-one-space-tours-hoteldbcluster-9nfqx5rpeqsk.cluster-czkkmvkxw6p9.us-east-1.rds.amazonaws.com -u admin sample_dataset/reservations.csv --local -p
+mysqlimport serverlesschallenge --ignore-lines=1 --fields-terminated-by=, -h day-one-space-tours-hoteldbcluster-9nfqx5rpeqsk.cluster-czkkmvkxw6p9.us-east-1.rds.amazonaws.com -u admin sample_dataset/room_types.csv --local -p
+mysqlimport serverlesschallenge --ignore-lines=1 --fields-terminated-by=, -h day-one-space-tours-hoteldbcluster-9nfqx5rpeqsk.cluster-czkkmvkxw6p9.us-east-1.rds.amazonaws.com -u admin sample_dataset/rooms.csv --local -p

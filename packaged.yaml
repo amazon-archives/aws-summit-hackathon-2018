@@ -1,0 +1,84 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Starter template for Day One Space Tours hackathon
+Globals:
+  Api:
+    BinaryMediaTypes:
+    - '*~1*'
+Outputs:
+  ApiBaseUrl:
+    Description: API Gateway endpoint URL for Prod environment
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/
+  HotelDBInstanceAddress:
+    Description: Address to connect to the MySQL Hotel DB Instance
+    Value:
+      Fn::GetAtt:
+      - HotelDBInstance
+      - Endpoint.Address
+  HotelDBInstancePort:
+    Description: Port number to connect to the MySQL Hotel DB Instance
+    Value:
+      Fn::GetAtt:
+      - HotelDBInstance
+      - Endpoint.Port
+Parameters:
+  DbPassword:
+    Default: password
+    NoEcho: true
+    Type: String
+Resources:
+  CustomerTable:
+    Properties:
+      PrimaryKey:
+        Name: CustomerId
+        Type: Number
+    Type: AWS::Serverless::SimpleTable
+  HotelDBCluster:
+    Properties:
+      Engine: aurora
+      MasterUserPassword:
+        Ref: DbPassword
+      MasterUsername: admin
+    Type: AWS::RDS::DBCluster
+  HotelDBInstance:
+    Properties:
+      DBClusterIdentifier:
+        Ref: HotelDBCluster
+      DBInstanceClass: db.t2.small
+      Engine: aurora
+    Type: AWS::RDS::DBInstance
+  HotelsService:
+    Properties:
+      CodeUri: s3://serverless-challenge-summit2018/d0a5690187b0767e7fcba8a76a0ffb51
+      Environment:
+        Variables:
+          CUSTOMER_TABLE_ARN:
+            Fn::GetAtt:
+            - CustomerTable
+            - Arn
+          HOTELDB_INSTANCE_ADDRESS:
+            Fn::GetAtt:
+            - HotelDBInstance
+            - Endpoint.Address
+          HOTELDB_INSTANCE_PORT:
+            Fn::GetAtt:
+            - HotelDBInstance
+            - Endpoint.Port
+      Events:
+        AllRoutes:
+          Properties:
+            Method: any
+            Path: /{proxy+}
+          Type: Api
+        RootRoute:
+          Properties:
+            Method: get
+            Path: /
+          Type: Api
+      Handler: lambda.handler
+      Policies:
+      - AmazonDynamoDBReadOnlyAccess
+      Runtime: nodejs8.10
+      Timeout: 15
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31
